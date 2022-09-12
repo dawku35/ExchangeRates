@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		161FBC2E28CB7F7A0099B1D5 /* ConvertComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161FBC2D28CB7F7A0099B1D5 /* ConvertComponents.swift */; };
 		162A4EF428C75B8D0084F380 /* ExchangeRatesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162A4EF328C75B8D0084F380 /* ExchangeRatesApp.swift */; };
 		162A4EF828C75B8E0084F380 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 162A4EF728C75B8E0084F380 /* Assets.xcassets */; };
 		162A4EFB28C75B8E0084F380 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 162A4EFA28C75B8E0084F380 /* Preview Assets.xcassets */; };
@@ -14,9 +15,6 @@
 		162A4F0F28C75B8E0084F380 /* ExchangeRatesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162A4F0E28C75B8E0084F380 /* ExchangeRatesUITests.swift */; };
 		162A4F1128C75B8E0084F380 /* ExchangeRatesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162A4F1028C75B8E0084F380 /* ExchangeRatesUITestsLaunchTests.swift */; };
 		162A4F2128C75BFE0084F380 /* Responses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162A4F2028C75BFE0084F380 /* Responses.swift */; };
-		162A4F2328C760220084F380 /* ConvertFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162A4F2228C760220084F380 /* ConvertFetcher.swift */; };
-		162A4F2528C761690084F380 /* ConvertError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162A4F2428C761690084F380 /* ConvertError.swift */; };
-		162A4F2728C769DC0084F380 /* Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162A4F2628C769DC0084F380 /* Parsing.swift */; };
 		162A4F2C28C77D4A0084F380 /* ConvertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162A4F2B28C77D4A0084F380 /* ConvertView.swift */; };
 		162A4F2E28C8B8E60084F380 /* ConvertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162A4F2D28C8B8E60084F380 /* ConvertViewModel.swift */; };
 		162A4F3028C9D28C0084F380 /* ConvertAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162A4F2F28C9D28C0084F380 /* ConvertAlertViewModel.swift */; };
@@ -41,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		161FBC2D28CB7F7A0099B1D5 /* ConvertComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertComponents.swift; sourceTree = "<group>"; };
 		162A4EF028C75B8D0084F380 /* ExchangeRates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExchangeRates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		162A4EF328C75B8D0084F380 /* ExchangeRatesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRatesApp.swift; sourceTree = "<group>"; };
 		162A4EF728C75B8E0084F380 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -51,9 +50,6 @@
 		162A4F0E28C75B8E0084F380 /* ExchangeRatesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRatesUITests.swift; sourceTree = "<group>"; };
 		162A4F1028C75B8E0084F380 /* ExchangeRatesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRatesUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		162A4F2028C75BFE0084F380 /* Responses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Responses.swift; sourceTree = "<group>"; };
-		162A4F2228C760220084F380 /* ConvertFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertFetcher.swift; sourceTree = "<group>"; };
-		162A4F2428C761690084F380 /* ConvertError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertError.swift; sourceTree = "<group>"; };
-		162A4F2628C769DC0084F380 /* Parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parsing.swift; sourceTree = "<group>"; };
 		162A4F2B28C77D4A0084F380 /* ConvertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertView.swift; sourceTree = "<group>"; };
 		162A4F2D28C8B8E60084F380 /* ConvertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertViewModel.swift; sourceTree = "<group>"; };
 		162A4F2F28C9D28C0084F380 /* ConvertAlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertAlertViewModel.swift; sourceTree = "<group>"; };
@@ -85,11 +81,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		161FBC2C28CB7F330099B1D5 /* ExchangeRatesAPIwithAsync */ = {
+			isa = PBXGroup;
+			children = (
+				161FBC2D28CB7F7A0099B1D5 /* ConvertComponents.swift */,
+				162A4F2028C75BFE0084F380 /* Responses.swift */,
+			);
+			path = ExchangeRatesAPIwithAsync;
+			sourceTree = "<group>";
+		};
 		162A4EE728C75B8C0084F380 = {
 			isa = PBXGroup;
 			children = (
+				161FBC2C28CB7F330099B1D5 /* ExchangeRatesAPIwithAsync */,
 				162A4F2828C77AC40084F380 /* View */,
-				162A4F1D28C75BB60084F380 /* ExchangeRatesAPI */,
 				162A4EF228C75B8D0084F380 /* ExchangeRates */,
 				162A4F0328C75B8E0084F380 /* ExchangeRatesTests */,
 				162A4F0D28C75B8E0084F380 /* ExchangeRatesUITests */,
@@ -140,17 +145,6 @@
 				162A4F1028C75B8E0084F380 /* ExchangeRatesUITestsLaunchTests.swift */,
 			);
 			path = ExchangeRatesUITests;
-			sourceTree = "<group>";
-		};
-		162A4F1D28C75BB60084F380 /* ExchangeRatesAPI */ = {
-			isa = PBXGroup;
-			children = (
-				162A4F2028C75BFE0084F380 /* Responses.swift */,
-				162A4F2228C760220084F380 /* ConvertFetcher.swift */,
-				162A4F2428C761690084F380 /* ConvertError.swift */,
-				162A4F2628C769DC0084F380 /* Parsing.swift */,
-			);
-			path = ExchangeRatesAPI;
 			sourceTree = "<group>";
 		};
 		162A4F2828C77AC40084F380 /* View */ = {
@@ -295,14 +289,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				162A4F2128C75BFE0084F380 /* Responses.swift in Sources */,
+				161FBC2E28CB7F7A0099B1D5 /* ConvertComponents.swift in Sources */,
 				162A4F3428C9D5A00084F380 /* ConvertAlertView.swift in Sources */,
 				162A4F3028C9D28C0084F380 /* ConvertAlertViewModel.swift in Sources */,
-				162A4F2328C760220084F380 /* ConvertFetcher.swift in Sources */,
 				162A4EF428C75B8D0084F380 /* ExchangeRatesApp.swift in Sources */,
-				162A4F2728C769DC0084F380 /* Parsing.swift in Sources */,
 				162A4F2C28C77D4A0084F380 /* ConvertView.swift in Sources */,
 				162A4F2E28C8B8E60084F380 /* ConvertViewModel.swift in Sources */,
-				162A4F2528C761690084F380 /* ConvertError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

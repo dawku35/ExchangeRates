@@ -1,35 +1,37 @@
 import SwiftUI
 import Combine
 
+@MainActor
 class ConvertViewModel: ObservableObject {
   @Published var dataSource: ConvertAlertViewModel?
-
   var to: String
-  private let convertFetcher: ConvertFetchable
-  private var disposables = Set<AnyCancellable>()
-
-  init(to: String, convertFetcher: ConvertFetchable) {
-    self.convertFetcher = convertFetcher
+  private let convertComponents: ConvertComponents
+  @Published private(set) var state: State = .na
+  @Published var hasError: Bool = false
+    
+    enum State {
+        case na
+        case loading
+        case succes
+        case failed(error: Error)
+    }
+    
+  init(to: String, convertComponents: ConvertComponents) {
+    self.convertComponents = convertComponents
     self.to = to
   }
-
-  func refresh() {
-    convertFetcher
-      .ConvertFromEurTo(forTo: to)
-      .map(ConvertAlertViewModel.init)
-      .receive(on: DispatchQueue.main)
-      .sink(receiveCompletion: { [weak self] value in
-        guard let self = self else { return }
-        switch value {
-        case .failure:
-          self.dataSource = nil
-        case .finished:
-          break
+  
+    func getConvert() async{
+        self.state = .loading
+        self.hasError = false
+        
+        do {
+            let convert = try await convertComponents.fetchConvert(to: to)
+            self.dataSource = ConvertAlertViewModel.init(item: convert)
+            self.state = .succes
+        } catch {
+            self.state = .failed(error: error)
+            self.hasError = true
         }
-      }, receiveValue: { [weak self] rates in
-          guard let self = self else { return }
-          self.dataSource = rates
-      })
-      .store(in: &disposables)
-  }
+    }
 }

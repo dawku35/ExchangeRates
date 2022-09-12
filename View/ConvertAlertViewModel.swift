@@ -3,7 +3,7 @@ import SwiftUI
 import MapKit
 
 struct ConvertAlertViewModel {
-  private let item: ConvertResponse
+  var item: ConvertResponse
   
   var rate: String {
       return String(format: "%.3f", Double(item.info.rate) )

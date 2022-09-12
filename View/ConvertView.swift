@@ -19,13 +19,37 @@ struct ConvertView: View {
         ZStack{
             Color.yellow
                 .edgesIgnoringSafeArea(.all)
-            VStack(spacing: 20){
-                TitleText(text: "Exchange Rates")
-                MenuList(choose: $choose, alertIsVisible: $alertIsVisible, viewModel: viewModel)
-                if(alertIsVisible){
-                    ConvertAlertView(viewModel: viewModel)
+            switch viewModel.state {
+                case .succes:
+                        VStack(spacing: 20){
+                            TitleText(text: "Exchange Rates")
+                            MenuList(choose: $choose, alertIsVisible: $alertIsVisible, viewModel: viewModel)
+                            if(alertIsVisible){
+                                ConvertAlertView(viewModel: viewModel)
+                            }
+                            Spacer()
+                        }
+                case .loading:
+                    ProgressView()
+                default:
+                    EmptyView()
+            }
+        }
+        .task {
+            await viewModel.getConvert()
+        }
+        .alert("Error", isPresented: $viewModel.hasError
+               ,presenting: viewModel.state) { detail in
+            
+            Button("Retry") {
+                Task {
+                    await viewModel.getConvert()
                 }
-                Spacer()
+            }
+        } message: { detail in
+            if case let .failed(error) = detail {
+                
+                Text(error.localizedDescription)
             }
         }
         
@@ -88,7 +112,9 @@ struct MenuList: View {
     func actionButton(to: String){
         withAnimation(){
             viewModel.to = to
-            viewModel.refresh()
+            Task {
+                await viewModel.getConvert()
+            }
             choose = to
             alertIsVisible = true
         }
@@ -96,7 +122,7 @@ struct MenuList: View {
 }
 
 struct ConvertViewModel_Previews: PreviewProvider {
-    static private var viewModel = ConvertViewModel.init(to: "USD", convertFetcher: ConvertFetcher.init())
+    static private var viewModel = ConvertViewModel.init(to: "USD", convertComponents: ConvertComponents.init())
     static var previews: some View {
         ConvertView(viewModel: viewModel)
     }
