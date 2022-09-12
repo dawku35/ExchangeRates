@@ -10,7 +10,7 @@ import SwiftUI
 @main
 struct ExchangeRatesApp: App {
     var body: some Scene {
-        let viewModel = ConvertViewModel.init(to: "USD", convertFetcher: ConvertFetcher.init())
+        let viewModel = ConvertViewModel.init(to: "USD", convertComponents: ConvertComponents.init())
         WindowGroup {
             ConvertView(viewModel: viewModel)
         }
