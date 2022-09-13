@@ -29,6 +29,6 @@ struct ConvertAlertView: View {
 
 struct ConvertRowView_Previews: PreviewProvider {
     static var previews: some View {
-        ConvertAlertView(viewModel: ConvertViewModel.init(to: "USD", convertComponents: ConvertComponents.init()))
+        ConvertAlertView(viewModel: ConvertViewModel.init(to: "USD", convertComponents: ConvertComponentsImpl.init()))
     }
 }

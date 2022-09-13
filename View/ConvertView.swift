@@ -122,7 +122,7 @@ struct MenuList: View {
 }
 
 struct ConvertViewModel_Previews: PreviewProvider {
-    static private var viewModel = ConvertViewModel.init(to: "USD", convertComponents: ConvertComponents.init())
+    static private var viewModel = ConvertViewModel.init(to: "USD", convertComponents: ConvertComponentsImpl.init())
     static var previews: some View {
         ConvertView(viewModel: viewModel)
     }

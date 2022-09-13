@@ -25,6 +25,8 @@ class ExchangeRatesUITests: XCTestCase {
     func test_UITestingConvertView_menuButton_shouldShowAlert() throws {
         let app = XCUIApplication()
         app.launch()
+        XCUIApplication().buttons["Choose"].tap()
+                                                        
                         
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }

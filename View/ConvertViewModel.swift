@@ -3,11 +3,11 @@ import Combine
 
 @MainActor
 class ConvertViewModel: ObservableObject {
-  @Published var dataSource: ConvertAlertViewModel?
-  var to: String
-  private let convertComponents: ConvertComponents
-  @Published private(set) var state: State = .na
-  @Published var hasError: Bool = false
+    @Published var dataSource: ConvertAlertViewModel?
+    var to: String
+    private let convertComponents: ConvertComponents
+    @Published private(set) var state: State = .na
+    @Published var hasError: Bool = false
     
     enum State {
         case na
@@ -16,10 +16,10 @@ class ConvertViewModel: ObservableObject {
         case failed(error: Error)
     }
     
-  init(to: String, convertComponents: ConvertComponents) {
-    self.convertComponents = convertComponents
-    self.to = to
-  }
+    init(to: String, convertComponents: ConvertComponents) {
+        self.convertComponents = convertComponents
+        self.to = to
+    }
   
     func getConvert() async{
         self.state = .loading
