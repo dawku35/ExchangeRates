@@ -50,7 +50,7 @@ class ExchangeRatesTests: XCTestCase {
             await convertViewModel.getConvert()
         }
         
-        XCTAssertFalse(convertComponentsMock.shouldFail)
+        XCTAssertFalse(convertComponentsMock.shouldFail!)
     }
     
     func testPerformanceExample() throws {
@@ -59,5 +59,6 @@ class ExchangeRatesTests: XCTestCase {
             // Put the code you want to measure the time of here.
         }
     }
-
+    
+//    func test_UnitTestingConvertAlertViewModel_
 }
