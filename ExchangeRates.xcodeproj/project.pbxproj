@@ -20,7 +20,8 @@
 		162A4F3028C9D28C0084F380 /* ConvertAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162A4F2F28C9D28C0084F380 /* ConvertAlertViewModel.swift */; };
 		162A4F3428C9D5A00084F380 /* ConvertAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162A4F3328C9D5A00084F380 /* ConvertAlertView.swift */; };
 		164F978E28D0778800F4445B /* ConvertComponentsMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F978D28D0778800F4445B /* ConvertComponentsMock.swift */; };
-		164F979028D09AE800F4445B /* ConvertSuccessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 164F978F28D09AE800F4445B /* ConvertSuccessResponse.json */; };
+		164F979528D0B45F00F4445B /* ConvertFailedResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 164F979428D0B45F00F4445B /* ConvertFailedResponse.json */; };
+		164F979728D0B49300F4445B /* ConvertSuccessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 164F979628D0B49300F4445B /* ConvertSuccessResponse.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +58,8 @@
 		162A4F2F28C9D28C0084F380 /* ConvertAlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertAlertViewModel.swift; sourceTree = "<group>"; };
 		162A4F3328C9D5A00084F380 /* ConvertAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertAlertView.swift; sourceTree = "<group>"; };
 		164F978D28D0778800F4445B /* ConvertComponentsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertComponentsMock.swift; sourceTree = "<group>"; };
-		164F978F28D09AE800F4445B /* ConvertSuccessResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ConvertSuccessResponse.json; sourceTree = "<group>"; };
+		164F979428D0B45F00F4445B /* ConvertFailedResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ConvertFailedResponse.json; sourceTree = "<group>"; };
+		164F979628D0B49300F4445B /* ConvertSuccessResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ConvertSuccessResponse.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +99,10 @@
 		162A4EE728C75B8C0084F380 = {
 			isa = PBXGroup;
 			children = (
-				161FBC2C28CB7F330099B1D5 /* ExchangeRatesAPI */,
 				162A4F2828C77AC40084F380 /* View */,
+				164F979928D0CBF900F4445B /* ConvertAlertViewModel */,
+				164F979828D0CBD800F4445B /* ConvertViewModel */,
+				161FBC2C28CB7F330099B1D5 /* ExchangeRatesAPI */,
 				162A4EF228C75B8D0084F380 /* ExchangeRates */,
 				162A4F0328C75B8E0084F380 /* ExchangeRatesTests */,
 				162A4F0D28C75B8E0084F380 /* ExchangeRatesUITests */,
@@ -139,7 +143,8 @@
 			children = (
 				162A4F0428C75B8E0084F380 /* ExchangeRatesTests.swift */,
 				164F978D28D0778800F4445B /* ConvertComponentsMock.swift */,
-				164F978F28D09AE800F4445B /* ConvertSuccessResponse.json */,
+				164F979428D0B45F00F4445B /* ConvertFailedResponse.json */,
+				164F979628D0B49300F4445B /* ConvertSuccessResponse.json */,
 			);
 			path = ExchangeRatesTests;
 			sourceTree = "<group>";
@@ -157,11 +162,25 @@
 			isa = PBXGroup;
 			children = (
 				162A4F2B28C77D4A0084F380 /* ConvertView.swift */,
-				162A4F2D28C8B8E60084F380 /* ConvertViewModel.swift */,
-				162A4F2F28C9D28C0084F380 /* ConvertAlertViewModel.swift */,
 				162A4F3328C9D5A00084F380 /* ConvertAlertView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		164F979828D0CBD800F4445B /* ConvertViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				162A4F2D28C8B8E60084F380 /* ConvertViewModel.swift */,
+			);
+			path = ConvertViewModel;
+			sourceTree = "<group>";
+		};
+		164F979928D0CBF900F4445B /* ConvertAlertViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				162A4F2F28C9D28C0084F380 /* ConvertAlertViewModel.swift */,
+			);
+			path = ConvertAlertViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,7 +296,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				164F979028D09AE800F4445B /* ConvertSuccessResponse.json in Resources */,
+				164F979728D0B49300F4445B /* ConvertSuccessResponse.json in Resources */,
+				164F979528D0B45F00F4445B /* ConvertFailedResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

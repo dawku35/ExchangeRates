@@ -53,6 +53,18 @@ class ExchangeRatesTests: XCTestCase {
         XCTAssertFalse(convertComponentsMock.shouldFail!)
     }
     
+    @MainActor
+    func test_UnitTestingConvertComponentsfuncfetchConvert_decodeddata_shouldreturnbadconvertResponse() async{
+        let convertComponentsMock = ConvertComponentsMock(shouldFail: false)
+        let convertViewModel = ConvertViewModel(to: "PLN", convertComponents: convertComponentsMock)
+        
+        do{
+            await convertViewModel.getConvert()
+        }
+        
+        XCTAssertFalse(convertComponentsMock.shouldFail!)
+    }
+    
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
         self.measure {
