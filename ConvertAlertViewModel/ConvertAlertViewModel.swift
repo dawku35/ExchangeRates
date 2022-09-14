@@ -6,7 +6,7 @@ struct ConvertAlertViewModel {
   var item: ConvertResponse
   
   var rate: String {
-      return String(format: "%.3f", Double(item.info.rate) )
+      return String(format: "%.3f", item.info.rate)
   }
   
   var date: String {

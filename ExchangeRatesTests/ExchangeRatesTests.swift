@@ -11,11 +11,11 @@ import XCTest
 class ExchangeRatesTests: XCTestCase {
 
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+        
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        
     }
     
     func test_UnitTestingConvertComponentsfuncmakeConvertComponents_components_shouldBeGood (){
@@ -41,10 +41,10 @@ class ExchangeRatesTests: XCTestCase {
             XCTAssertEqual(convertResponse, goodComponents)
         }
     }
-    @MainActor
+    
     func test_UnitTestingConvertComponentsfuncfetchConvert_decodeddata_shouldreturngoodconvertResponse() async{
         let convertComponentsMock = ConvertComponentsMock(shouldFail: false)
-        let convertViewModel = ConvertViewModel(to: "PLN", convertComponents: convertComponentsMock)
+        let convertViewModel = await ConvertViewModel(to: "PLN", convertComponents: convertComponentsMock)
         
         do{
             await convertViewModel.getConvert()
@@ -53,24 +53,21 @@ class ExchangeRatesTests: XCTestCase {
         XCTAssertFalse(convertComponentsMock.shouldFail!)
     }
     
-    @MainActor
-    func test_UnitTestingConvertComponentsfuncfetchConvert_decodeddata_shouldreturnbadconvertResponse() async{
-        let convertComponentsMock = ConvertComponentsMock(shouldFail: false)
-        let convertViewModel = ConvertViewModel(to: "PLN", convertComponents: convertComponentsMock)
+    func test_UnitTestingConvertAlertViewModel_item_shouldreturngoodvalues(){
+        let convertAlertViewModel = ConvertAlertViewModel(item: ConvertResponse.init())
+        let item = ConvertResponse.init()
         
-        do{
-            await convertViewModel.getConvert()
-        }
-        
-        XCTAssertFalse(convertComponentsMock.shouldFail!)
+        XCTAssertEqual(item.query.from, convertAlertViewModel.from)
+        XCTAssertEqual(item.query.to, convertAlertViewModel.to)
+        XCTAssertEqual(item.date, convertAlertViewModel.date)
+        XCTAssertEqual(String(format: "%.3f", item.info.rate), convertAlertViewModel.rate)
     }
     
     func testPerformanceExample() throws {
-        // This is an example of a performance test case.
+        
         self.measure {
-            // Put the code you want to measure the time of here.
+            
         }
     }
     
-//    func test_UnitTestingConvertAlertViewModel_
 }

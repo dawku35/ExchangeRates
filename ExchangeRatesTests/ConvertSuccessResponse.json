@@ -6,8 +6,8 @@
     "timestamp": 1519328414
   },
   "query": {
-    "amount": 25,
-    "from": "GBP",
+    "amount": 1,
+    "from": "EUR",
     "to": "JPY"
   },
   "result": 3724.305775,

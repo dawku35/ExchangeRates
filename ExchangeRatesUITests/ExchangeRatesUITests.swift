@@ -8,27 +8,51 @@
 import XCTest
 
 class ExchangeRatesUITests: XCTestCase {
-
+    private var app: XCUIApplication!
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        app = XCUIApplication()
+        app.activate()
     }
 
     override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        app = nil
     }
 
     func test_UITestingConvertView_menuButton_shouldShowAlert() throws {
-        let app = XCUIApplication()
-        app.launch()
-        XCUIApplication().buttons["Choose"].tap()
-                                                        
-                        
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let currencies = ["PLN", "GBP", "USD", "JPY", "AED"]
+        let chooseButton = app.buttons["Choose"]
+        XCTAssertTrue(chooseButton.waitForExistence(timeout: 4.0))
+        chooseButton.tap()
+        for currency in currencies {
+            let currencyButton = app.buttons[currency]
+            XCTAssertTrue(currencyButton.exists)
+            currencyButton.tap()
+            
+            let fromText = app.staticTexts["from EUR"]
+            XCTAssertTrue(fromText.waitForExistence(timeout: 4.0))
+            let toText = app.staticTexts["To \(currency)"]
+            XCTAssertTrue(toText.waitForExistence(timeout: 4.0))
+            
+            XCTAssertTrue(currencyButton.exists)
+            currencyButton.tap()
+        }
+    }
+    
+    func test_UITestingConvertView_menuButton_shouldShowErrorConnection() throws {
+        
+        app.windows.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.tap()
+        app/*@START_MENU_TOKEN@*/.scrollViews.otherElements.scrollViews["ControlCenterLayoutView"].otherElements.scrollViews.otherElements.switches["wifi-button"]/*[[".otherElements[\"ControlCenterView\"].scrollViews.otherElements.scrollViews[\"ControlCenterLayoutView\"].otherElements.scrollViews.otherElements",".switches[\"Wi-Fi, Willa_na_Jeżowskiej\"]",".switches[\"wifi-button\"]",".scrollViews.otherElements.scrollViews[\"ControlCenterLayoutView\"].otherElements.scrollViews.otherElements"],[[[-1,3,1],[-1,0,1]],[[-1,2],[-1,1]]],[0,0]]@END_MENU_TOKEN@*/.tap()
+        app.otherElements["ControlCenterView"].children(matching: .scrollView).element.tap()
+        app.buttons["Choose"].tap()
+        app.buttons["PLN"].tap()
+        
+        for _ in 1..<5 {
+            let badConnectionButton = app.buttons["Retry"]
+            XCTAssertTrue(badConnectionButton.waitForExistence(timeout: 4.0))
+            badConnectionButton.tap()
+        }
     }
 
     func testLaunchPerformance() throws {
