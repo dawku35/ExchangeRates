@@ -41,18 +41,39 @@ class ExchangeRatesUITests: XCTestCase {
     }
     
     func test_UITestingConvertView_menuButton_shouldShowErrorConnection() throws {
+        let springboard = XCUIApplication(bundleIdentifier: "com.apple.springboard")
         
-        app.windows.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.children(matching: .other).element.tap()
-        app/*@START_MENU_TOKEN@*/.scrollViews.otherElements.scrollViews["ControlCenterLayoutView"].otherElements.scrollViews.otherElements.switches["wifi-button"]/*[[".otherElements[\"ControlCenterView\"].scrollViews.otherElements.scrollViews[\"ControlCenterLayoutView\"].otherElements.scrollViews.otherElements",".switches[\"Wi-Fi, Willa_na_Jeżowskiej\"]",".switches[\"wifi-button\"]",".scrollViews.otherElements.scrollViews[\"ControlCenterLayoutView\"].otherElements.scrollViews.otherElements"],[[[-1,3,1],[-1,0,1]],[[-1,2],[-1,1]]],[0,0]]@END_MENU_TOKEN@*/.tap()
-        app.otherElements["ControlCenterView"].children(matching: .scrollView).element.tap()
-        app.buttons["Choose"].tap()
-        app.buttons["PLN"].tap()
+        let coord1 = app.coordinate(withNormalizedOffset: CGVector(dx: 5, dy: 0.01))
+        let coord2 = app.coordinate(withNormalizedOffset: CGVector(dx: 5, dy: 0.2))
+        coord1.press(forDuration: 0.1, thenDragTo: coord2)
+
+        let wifiButton = springboard.switches["wifi-button"]
+        XCTAssertTrue(wifiButton.waitForExistence(timeout: 2))
+        wifiButton.tap()
+        
+        let coordToBack = app.coordinate(withNormalizedOffset: CGVector(dx: 5, dy: -10))
+        coordToBack.tap()
+        
+        let chooseButton = app.buttons["Choose"]
+        XCTAssertTrue(chooseButton.waitForExistence(timeout: 4.0))
+        chooseButton.tap()
+        
+        let currencyButton = app.buttons["PLN"]
+        XCTAssertTrue(currencyButton.waitForExistence(timeout: 2.0))
+        currencyButton.tap()
         
         for _ in 1..<5 {
             let badConnectionButton = app.buttons["Retry"]
             XCTAssertTrue(badConnectionButton.waitForExistence(timeout: 4.0))
             badConnectionButton.tap()
         }
+        
+        coord1.press(forDuration: 0.1, thenDragTo: coord2)
+
+        XCTAssertTrue(wifiButton.waitForExistence(timeout: 2.0))
+        wifiButton.tap()
+        
+        coordToBack.tap()
     }
 
     func testLaunchPerformance() throws {
