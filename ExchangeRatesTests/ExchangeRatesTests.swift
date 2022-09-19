@@ -22,7 +22,6 @@ class ExchangeRatesTests: XCTestCase {
         let currencies = ["PLN", "GBP", "USD", "JPY", "AED"]
         let convertComponents = ConvertComponentsImpl.init()
         
-        
         for currency in currencies {
             let convertResponse = convertComponents.makeConvertComponents(withTo: currency)
             
@@ -44,6 +43,17 @@ class ExchangeRatesTests: XCTestCase {
     
     func test_UnitTestingConvertComponentsfuncfetchConvert_decodeddata_shouldreturngoodconvertResponse() async{
         let convertComponentsMock = ConvertComponentsMock(shouldFail: false)
+        let convertViewModel = await ConvertViewModel(to: "PLN", convertComponents: convertComponentsMock)
+        
+        do{
+            await convertViewModel.getConvert()
+        }
+        
+        XCTAssertFalse(convertComponentsMock.shouldFail!)
+    }
+    
+    func test_UnitTestingConvertComponentsfuncfetchConvert_decodeddata_shouldReturnError() async{
+        let convertComponentsMock = ConvertComponentsMock(shouldFail: true)
         let convertViewModel = await ConvertViewModel(to: "PLN", convertComponents: convertComponentsMock)
         
         do{

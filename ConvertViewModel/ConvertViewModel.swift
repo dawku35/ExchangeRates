@@ -4,7 +4,7 @@ import Combine
 @MainActor
 class ConvertViewModel: ObservableObject {
     @Published var dataSource: ConvertAlertViewModel?
-    var to: String
+    var base: String
     private let convertComponents: ConvertComponents
     @Published private(set) var state: State = .na
     @Published var hasError: Bool = false
@@ -16,9 +16,9 @@ class ConvertViewModel: ObservableObject {
         case failed(error: Error)
     }
     
-    init(to: String, convertComponents: ConvertComponents) {
+    init(base: String, convertComponents: ConvertComponents) {
         self.convertComponents = convertComponents
-        self.to = to
+        self.base = base
     }
   
     func getConvert() async{
@@ -26,8 +26,8 @@ class ConvertViewModel: ObservableObject {
         self.hasError = false
         
         do {
-            let convert = try await convertComponents.fetchConvert(to: to)
-            self.dataSource = ConvertAlertViewModel.init(item: convert)
+            let latest = try await convertComponents.fetchLatest(base: base)
+            self.dataSource = ConvertAlertViewModel.init(item: latest)
             self.state = .succes
         } catch {
             self.state = .failed(error: error)

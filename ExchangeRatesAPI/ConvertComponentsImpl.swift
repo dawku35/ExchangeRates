@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ConvertComponents{
-    func fetchConvert(to: String) async throws -> ConvertResponse
+    func fetchLatest(base: String) async throws -> Latest
 }
 
 class ConvertComponentsImpl: ConvertComponents {
@@ -22,7 +22,7 @@ class ConvertComponentsImpl: ConvertComponents {
         static let scheme = "https"
         static let host = "api.apilayer.com"
         static let path = "/exchangerates_data"
-        static let key = "2jiqgWRpA7vCaXRWn2kLN86HLiIHwUCo"
+        static let key = "GbWUy6k8jdhOAszvPXCA4CsP1dKpdASN"
     }
     
     enum ConvertError: Error {
@@ -31,36 +31,41 @@ class ConvertComponentsImpl: ConvertComponents {
       case invalidStatusCode
     }
     
-    func makeConvertComponents(
-        withTo to: String
-    ) -> URLComponents {
+    func makeLatestComponents(withTo base: String) -> URLComponents {
         var components = URLComponents()
         components.scheme = OpenConvertAPI.scheme
         components.host = OpenConvertAPI.host
-        components.path = OpenConvertAPI.path + "/convert"
-    
+        components.path = OpenConvertAPI.path + "/latest"
+        var symbols = ["PLN", "GBP", "EUR", "JPY", "USD"]
+        
+        if let index = symbols.firstIndex(of: base) {
+            symbols.remove(at: index)
+        }
+        let symbolsString = symbols.joined(separator: ", ")
+        
         components.queryItems = [
-          URLQueryItem(name: "to", value: to),
-          URLQueryItem(name: "from", value: "EUR"),
-          URLQueryItem(name: "amount", value: "1"),
+          URLQueryItem(name: "base", value: base),
+          URLQueryItem(name: "symbols", value: symbolsString),
           URLQueryItem(name: "apikey", value: OpenConvertAPI.key)
         ]
         return components
       }
   
-    func fetchConvert(to: String) async throws -> ConvertResponse {
-        
-        let url = makeConvertComponents(withTo: to).url
+    func fetchLatest(base: String) async throws -> Latest {
+        let url = makeLatestComponents(withTo: base).url
         let configuration = URLSessionConfiguration.ephemeral
         
         let (data, response) = try await URLSession(configuration: configuration).data(from: url!)
         
-        guard let response = response as? HTTPURLResponse,
-              response.statusCode >= 200 && response.statusCode <= 299 else {
+        guard let response = response as? HTTPURLResponse else {
+            throw ConvertError.invalidStatusCode
+        }
+        print("HTTP status code \(response.statusCode)")
+        guard response.statusCode >= 200 && response.statusCode <= 299 else {
             throw ConvertError.invalidStatusCode
         }
         
-        let decodedData = try JSONDecoder().decode(ConvertResponse.self, from: data)
+        let decodedData = try JSONDecoder().decode(Latest.self, from: data)
         return decodedData
     }
 }

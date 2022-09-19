@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		161DA32328D8518E00A89E4B /* LatestResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DA32228D8518D00A89E4B /* LatestResponse.swift */; };
+		161DA32728D8605E00A89E4B /* LatestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161DA32628D8605E00A89E4B /* LatestView.swift */; };
 		161FBC2E28CB7F7A0099B1D5 /* ConvertComponentsImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 161FBC2D28CB7F7A0099B1D5 /* ConvertComponentsImpl.swift */; };
 		162A4EF428C75B8D0084F380 /* ExchangeRatesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162A4EF328C75B8D0084F380 /* ExchangeRatesApp.swift */; };
 		162A4EF828C75B8E0084F380 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 162A4EF728C75B8E0084F380 /* Assets.xcassets */; };
@@ -18,7 +20,6 @@
 		162A4F2C28C77D4A0084F380 /* ConvertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162A4F2B28C77D4A0084F380 /* ConvertView.swift */; };
 		162A4F2E28C8B8E60084F380 /* ConvertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162A4F2D28C8B8E60084F380 /* ConvertViewModel.swift */; };
 		162A4F3028C9D28C0084F380 /* ConvertAlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162A4F2F28C9D28C0084F380 /* ConvertAlertViewModel.swift */; };
-		162A4F3428C9D5A00084F380 /* ConvertAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162A4F3328C9D5A00084F380 /* ConvertAlertView.swift */; };
 		164F978E28D0778800F4445B /* ConvertComponentsMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164F978D28D0778800F4445B /* ConvertComponentsMock.swift */; };
 		164F979728D0B49300F4445B /* ConvertSuccessResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = 164F979628D0B49300F4445B /* ConvertSuccessResponse.json */; };
 /* End PBXBuildFile section */
@@ -41,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		161DA32228D8518D00A89E4B /* LatestResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestResponse.swift; sourceTree = "<group>"; };
+		161DA32628D8605E00A89E4B /* LatestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LatestView.swift; sourceTree = "<group>"; };
 		161FBC2D28CB7F7A0099B1D5 /* ConvertComponentsImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertComponentsImpl.swift; sourceTree = "<group>"; };
 		162A4EF028C75B8D0084F380 /* ExchangeRates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExchangeRates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		162A4EF328C75B8D0084F380 /* ExchangeRatesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeRatesApp.swift; sourceTree = "<group>"; };
@@ -55,7 +58,6 @@
 		162A4F2B28C77D4A0084F380 /* ConvertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertView.swift; sourceTree = "<group>"; };
 		162A4F2D28C8B8E60084F380 /* ConvertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertViewModel.swift; sourceTree = "<group>"; };
 		162A4F2F28C9D28C0084F380 /* ConvertAlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertAlertViewModel.swift; sourceTree = "<group>"; };
-		162A4F3328C9D5A00084F380 /* ConvertAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertAlertView.swift; sourceTree = "<group>"; };
 		164F978D28D0778800F4445B /* ConvertComponentsMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertComponentsMock.swift; sourceTree = "<group>"; };
 		164F979628D0B49300F4445B /* ConvertSuccessResponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = ConvertSuccessResponse.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,6 +92,7 @@
 			children = (
 				161FBC2D28CB7F7A0099B1D5 /* ConvertComponentsImpl.swift */,
 				162A4F2028C75BFE0084F380 /* Responses.swift */,
+				161DA32228D8518D00A89E4B /* LatestResponse.swift */,
 			);
 			path = ExchangeRatesAPI;
 			sourceTree = "<group>";
@@ -97,9 +100,8 @@
 		162A4EE728C75B8C0084F380 = {
 			isa = PBXGroup;
 			children = (
-				162A4F2828C77AC40084F380 /* View */,
-				164F979928D0CBF900F4445B /* ConvertAlertViewModel */,
 				164F979828D0CBD800F4445B /* ConvertViewModel */,
+				164F979928D0CBF900F4445B /* ConvertAlertViewModel */,
 				161FBC2C28CB7F330099B1D5 /* ExchangeRatesAPI */,
 				162A4EF228C75B8D0084F380 /* ExchangeRates */,
 				162A4F0328C75B8E0084F380 /* ExchangeRatesTests */,
@@ -155,18 +157,10 @@
 			path = ExchangeRatesUITests;
 			sourceTree = "<group>";
 		};
-		162A4F2828C77AC40084F380 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				162A4F2B28C77D4A0084F380 /* ConvertView.swift */,
-				162A4F3328C9D5A00084F380 /* ConvertAlertView.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		164F979828D0CBD800F4445B /* ConvertViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				162A4F2B28C77D4A0084F380 /* ConvertView.swift */,
 				162A4F2D28C8B8E60084F380 /* ConvertViewModel.swift */,
 			);
 			path = ConvertViewModel;
@@ -176,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				162A4F2F28C9D28C0084F380 /* ConvertAlertViewModel.swift */,
+				161DA32628D8605E00A89E4B /* LatestView.swift */,
 			);
 			path = ConvertAlertViewModel;
 			sourceTree = "<group>";
@@ -313,11 +308,12 @@
 			files = (
 				162A4F2128C75BFE0084F380 /* Responses.swift in Sources */,
 				161FBC2E28CB7F7A0099B1D5 /* ConvertComponentsImpl.swift in Sources */,
-				162A4F3428C9D5A00084F380 /* ConvertAlertView.swift in Sources */,
+				161DA32328D8518E00A89E4B /* LatestResponse.swift in Sources */,
 				162A4F3028C9D28C0084F380 /* ConvertAlertViewModel.swift in Sources */,
 				162A4EF428C75B8D0084F380 /* ExchangeRatesApp.swift in Sources */,
 				162A4F2C28C77D4A0084F380 /* ConvertView.swift in Sources */,
 				162A4F2E28C8B8E60084F380 /* ConvertViewModel.swift in Sources */,
+				161DA32728D8605E00A89E4B /* LatestView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

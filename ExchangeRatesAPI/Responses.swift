@@ -43,6 +43,6 @@ struct Query: Codable {
     init(){
         from = "PLN"
         to = "USD"
-        amount = 20
+        amount = 1
     }
 }

@@ -13,7 +13,7 @@ class ExchangeRatesUITests: XCTestCase {
     override func setUpWithError() throws {
         continueAfterFailure = false
         app = XCUIApplication()
-        app.activate()
+        app.launch()
     }
 
     override func tearDownWithError() throws {

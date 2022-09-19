@@ -25,8 +25,9 @@ struct ConvertView: View {
                             TitleText(text: "Exchange Rates")
                             MenuList(choose: $choose, alertIsVisible: $alertIsVisible, viewModel: viewModel)
                             if(alertIsVisible){
-                                ConvertAlertView(viewModel: viewModel)
+                                LatestView(viewmodel: viewModel)
                             }
+                            
                             Spacer()
                         }
                 case .loading:
@@ -76,27 +77,27 @@ struct MenuList: View {
     var body: some View {
         Menu{
             Button {
-                actionButton(to: "PLN")
+                actionButton(base: "PLN")
             } label: {
                 Text("PLN")
             }
             Button {
-                actionButton(to: "GBP")
+                actionButton(base: "GBP")
             } label: {
                 Text("GBP")
             }
             Button {
-                actionButton(to: "USD")
+                actionButton(base: "USD")
             } label: {
                 Text("USD")
             }
             Button {
-                actionButton(to: "JPY")
+                actionButton(base: "JPY")
             } label: {
                 Text("JPY")
             }
             Button {
-                actionButton(to: "AED")
+                actionButton(base: "AED")
             } label: {
                 Text("AED")
             }
@@ -109,20 +110,20 @@ struct MenuList: View {
         
     }
     
-    func actionButton(to: String){
+    func actionButton(base: String){
         withAnimation(){
-            viewModel.to = to
+            viewModel.base = base
             Task {
                 await viewModel.getConvert()
             }
-            choose = to
+            choose = base
             alertIsVisible = true
         }
     }
 }
 
 struct ConvertViewModel_Previews: PreviewProvider {
-    static private var viewModel = ConvertViewModel.init(to: "USD", convertComponents: ConvertComponentsImpl.init())
+    static private var viewModel = ConvertViewModel.init(base: "USD", convertComponents: ConvertComponentsImpl.init())
     static var previews: some View {
         ConvertView(viewModel: viewModel)
     }

@@ -3,25 +3,17 @@ import SwiftUI
 import MapKit
 
 struct ConvertAlertViewModel {
-  var item: ConvertResponse
+  var item: Latest
   
-  var rate: String {
-      return String(format: "%.3f", item.info.rate)
+    var rate: [String: Double] {
+      return item.rates
   }
   
   var date: String {
       return String(item.date)
   }
   
-  var from: String {
-      return String(item.query.from)
-  }
-  
-  var to: String {
-      return String(item.query.to)
-  }
-  
-  init(item: ConvertResponse) {
+  init(item: Latest) {
     self.item = item
   }
 }
