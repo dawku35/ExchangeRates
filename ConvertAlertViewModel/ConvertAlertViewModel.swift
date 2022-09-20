@@ -5,7 +5,7 @@ import MapKit
 struct ConvertAlertViewModel {
   var item: Latest
   
-    var rate: [String: Double] {
+  var rate: [String: Double] {
       return item.rates
   }
   

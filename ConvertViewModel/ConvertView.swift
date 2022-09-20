@@ -25,7 +25,7 @@ struct ConvertView: View {
                             TitleText(text: "Exchange Rates")
                             MenuList(choose: $choose, alertIsVisible: $alertIsVisible, viewModel: viewModel)
                             if(alertIsVisible){
-                                LatestView(viewmodel: viewModel)
+                                LatestView(viewModel: viewModel)
                             }
                             
                             Spacer()

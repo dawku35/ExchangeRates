@@ -1,7 +1,7 @@
 import Foundation
 
 // MARK: - Latest
-struct Latest: Codable {
+struct Latest: Codable, Identifiable {
     let success: Bool
     let date, base: String
     let timestamp: Int
