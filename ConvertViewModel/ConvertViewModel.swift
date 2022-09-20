@@ -2,7 +2,7 @@ import SwiftUI
 import Combine
 
 @MainActor
-class ConvertViewModel: ObservableObject, Identifiable {
+class ConvertViewModel: ObservableObject {
     @Published var dataSource: ConvertAlertViewModel?
     var base: String
     private let convertComponents: ConvertComponents
